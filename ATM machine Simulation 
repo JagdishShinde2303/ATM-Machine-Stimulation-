@@ -1,0 +1,130 @@
+import time
+
+# Welcome message
+print("Welcome to the ATM!")
+print("Please insert your card...")
+
+# Adding a delay for realism
+time.sleep(3)
+
+# Define the correct password and initial account balance
+password = 8262
+pin = int(input("\nPlease enter your PIN: "))
+
+balance = 10000  # Initial account balance
+transaction_history = []  # List to store transaction history
+
+# Check if the entered PIN is correct
+if pin == password:
+    # Loop for continuous ATM operations
+    while True:
+        print("\n==================== ATM Menu ====================")
+        print("1. Balance Inquiry")
+        print("2. Cash Withdrawal")
+        print("3. Cash Deposit")
+        print("4. Change PIN")
+        print("5. Transaction History")
+        print("6. Exit")
+        print("=====================================================")
+
+        try:
+            # User selects an option to continue operation
+            option = int(input("\nEnter the option number you want to choose: "))
+        except ValueError:
+            # Handling invalid input given by the user
+            print("\nInvalid input! Please enter a valid number for the option.\n")
+            continue
+
+        # Option 1: Balance Inquiry
+        if option == 1:
+            print(f"\nYour current balance is: {balance} Rupees.\n")
+
+        # Option 2: Cash Withdrawal
+        elif option == 2:
+            print("\n-- Cash Withdrawal --")
+            try:
+                withdrawal_amount = int(input("Enter the amount you want to withdraw: "))
+            except ValueError:
+                print("\nInvalid input! Please enter a valid amount.\n")
+                continue
+            
+            if withdrawal_amount > balance:
+                print("\nInsufficient balance. You cannot withdraw this amount.\n")
+            else:
+                balance -= withdrawal_amount  # Deducted the amount from balance
+                transaction_history.append(f"Withdrawn: {withdrawal_amount} Rupees")  # Recording the transaction for printing the transaction history
+                print(f"\nWithdrawal successful! You have withdrawn {withdrawal_amount} Rupees.")
+                print(f"Your current balance is {balance} Rupees.\n")
+
+        # Option 3: Cash Deposit
+        elif option == 3:
+            print("\n-- Cash Deposit --")
+            try:
+                deposit_amount = int(input("Enter the amount you want to deposit: "))
+            except ValueError:
+                print("\nInvalid input! Please enter a valid amount.\n")
+                continue
+            
+            if deposit_amount > 0:
+                balance += deposit_amount  # Added the deposit amount to balance
+                transaction_history.append(f"Deposited: {deposit_amount} Rupees")  # Recording the transaction for printing the transaction history
+                print(f"\nYou have successfully deposited {deposit_amount} Rupees.")
+                print(f"Your current balance is {balance} Rupees.\n")
+            else:
+                print("\nInvalid deposit amount. Please enter a positive number.\n")
+
+        # Option 4: Change PIN
+        elif option == 4:
+            print("\n-- Change PIN --")
+            try:
+                old_pin = int(input("Enter your current/old PIN: "))
+            except ValueError:
+                print("\nInvalid input! Please enter your 4-digit PIN correctly.\n")
+                continue
+            
+            if old_pin == password:
+                # Asking for a new PIN
+                while True:
+                    try:
+                        new_pin = int(input("\nEnter a new 4-digit PIN: "))
+                    except ValueError:
+                        print("\nInvalid input! Please enter a 4-digit number.\n")
+                        continue
+                    
+                    if 1000 <= new_pin <= 9999:  # Check if the new PIN is valid
+                        password = new_pin  # Change the password
+                        print("\nYour PIN has been successfully changed.\n")
+                        break
+                    else:
+                        print("\nInvalid PIN. Please enter a valid 4-digit PIN.\n")
+            else:
+                print("\nIncorrect PIN entered. Please try again.\n")
+
+        # Option 5:  Transaction History
+        elif option == 5:
+            print("\n-- Transaction History --")
+            if transaction_history:  # Checking if there are any transactions which had done previously
+                for transaction in transaction_history:
+                    print(transaction)
+                print("Thank you for using the ATM!\n")
+            else:
+                print("\nNo transactions yet.\n")
+                print("Thank you for using the ATM!\n")
+
+        # Option 6: Exit
+        elif option == 6:
+            print("\n-- Printing Transaction History Before Exit --")
+            if transaction_history:
+                for transaction in transaction_history:
+                    print(transaction)
+                print("Thank you for using the ATM!\n")
+            else:
+                print("\nNo transactions to display.\n")
+                print("Thank you for using the ATM!\n")
+            break  # Exiting the loop and end the program
+
+        # Invalid option
+        else:
+            print("\nInvalid option! Please choose a valid number from the menu.\n")
+else:
+    print("\nIncorrect PIN! Access Denied . Please try to insert correct PIN.")

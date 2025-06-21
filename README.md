@@ -1,79 +1,83 @@
-ATM Machine Simulation in Python
 
-This repository contains a console-based ATM (Automated Teller Machine) simulation developed in Python. The project emulates basic banking operations, providing users with an interactive experience to manage their virtual bank account.
+# 🏧 ATM Machine Simulation (Python Project)
 
-Features
+This is a **console-based Python project** that simulates a basic ATM (Automated Teller Machine) system. It allows users to log in using a PIN, view their balance, withdraw and deposit money, change their PIN, and view transaction history.
 
-User Authentication:
+---
 
-Secure access with PIN verification to ensure authorized usage.
+## 📌 Features
 
+- 🔐 **PIN Authentication** (default PIN: `8262`)
+- 💰 **Balance Inquiry**
+- 🏧 **Cash Withdrawal** (with insufficient balance check)
+- 💵 **Cash Deposit**
+- 🔄 **PIN Change** (with validation for old PIN and format)
+- 🧾 **Transaction History**
+- 🚪 **Exit with transaction log preview**
 
-Banking Operations:
+---
 
-Balance Inquiry: Check the current account balance.
+## ⚙️ How to Run
 
-Cash Withdrawal: Withdraw funds with checks for sufficient balance.
+### 📁 Prerequisites
+- Python 3 installed on your system
 
-Cash Deposit: Deposit funds, updating the account balance accordingly.
+### ▶️ Steps to Run
+1. **Clone or Download** this repository.
+2. Open the terminal or command prompt.
+3. Navigate to the folder where the file is saved.
+4. Run the program using:
 
-PIN Change: Update the account PIN after verifying the current one.
+```bash
+python ATM_Simulation.py
+```
 
-Transaction History: View a log of all transactions performed during the session.
+---
 
+## 🧪 Example Flow
 
-User-Friendly Interface:
+1. **Insert PIN** → If correct, continue.
+2. **Choose Option** from menu:
+    - Option 1 → Check Balance
+    - Option 2 → Withdraw Cash
+    - Option 3 → Deposit Cash
+    - Option 4 → Change PIN
+    - Option 5 → View Transactions
+    - Option 6 → Exit
+3. **Continue** until Exit is selected.
 
-Menu-driven navigation with clear prompts.
+---
 
-Input validation and error handling to guide users through each operation seamlessly.
+## 📂 File Structure
 
+```
+ATM_Simulation.py    # Main Python file containing the logic
+README.md            # Project description and instructions (this file)
+```
 
+---
 
-Code Overview
+## 💡 Notes
 
-The application is structured to simulate a real-world ATM experience:
+- PIN must be a 4-digit number (1000–9999).
+- Program handles invalid inputs and errors gracefully.
+- Good for beginners to understand **control structures, conditionals, and loops** in Python.
 
-1. Startup Sequence:
+---
 
-Displays a welcome message and simulates card insertion with a brief delay.
+## 📄 License
 
+This project is open source and free to use for educational or personal purposes.
 
+---
 
-2. Authentication:
+## 🤝 Contributing
 
-Prompts the user to enter a PIN.
+Feel free to fork this repo and improve the features (like GUI version or database connection). PRs are welcome!
 
-Verifies the entered PIN against a predefined password to grant access.
+---
 
+## 🙌 Developer
 
-
-3. Main Menu:
-
-Presents a list of available banking operations.
-
-Continuously displays the menu after each operation until the user chooses to exit.
-
-
-
-4. Operations:
-
-Balance Inquiry: Displays the current balance.
-
-Cash Withdrawal: Prompts for the withdrawal amount, checks for sufficient funds, and updates the balance.
-
-Cash Deposit: Prompts for the deposit amount and updates the balance.
-
-PIN Change: Allows the user to set a new PIN after verifying the current one.
-
-Transaction History: Maintains and displays a list of all transactions during the session.
-
-
-
-5. Exit Sequence:
-
-Upon exiting, the application displays the transaction history and a thank-you message.
-
-
-
+Made with ❤️ by [Jagdish Aniruddha Shinde](https://github.com/JagdishShinde2303)
 
